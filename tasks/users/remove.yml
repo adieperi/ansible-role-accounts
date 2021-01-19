@@ -1,0 +1,8 @@
+---
+- name: Remove the user {{ accounts.remove.user }}
+  user:
+    name: "{{ item }}"
+    state: absent
+    remove: yes
+  with_items:
+    - "{{ accounts.remove.user }}"
