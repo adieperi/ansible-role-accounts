@@ -1,18 +1,14 @@
 ---
-- name: Include users/remove.yml
-  include: users/remove.yml
+- name: Include updatePassword.yml
+  include: updatePassword.yml
+  when:
+    accounts['updatePassword']['username'] is defined
+    and
+    accounts['updatePassword']['username'] | length > 0
+
+- name: Include remove.yml
+  include: remove.yml
   when:
     accounts['remove']['user'] is defined
     and
     accounts['remove']['user'] | length > 0
-
-- name: Include authorizedKeys/add.yml
-  include: authorizedKeys/add.yml
-  when:
-    authorizedKeys['add']['user'] is defined
-    and
-    authorizedKeys['add']['sshKeys'] is defined
-    and
-    authorizedKeys['add']['user'] | length > 0
-    and
-    authorizedKeys['add']['sshKeys'] | length > 0

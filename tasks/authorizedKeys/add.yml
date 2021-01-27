@@ -1,9 +1,0 @@
----
-- name: Set authorized key to {{ authorizedKeys.add.user }}
-  authorized_key:
-    user: "{{ authorizedKeys.add.user }}"
-    key: "{{ item }}"
-    state: present
-    exclusive: True
-  with_items:
-    - "{{ authorizedKeys.add.sshKeys }}"

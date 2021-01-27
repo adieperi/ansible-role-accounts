@@ -3,17 +3,20 @@ Manage local accounts
 
 ```yaml
 ---
-- name: Setup root authorized keys and remove administrator account
-      include_role:
-        name: ansible-role-accounts
-      vars:
-        accounts:
-          remove:
-            user:
-              - administrator
-        authorizedKeys:
-          add:
-            user: root
-            sshKeys: 
-               - https://github.com/adieperi.keys
+- name: Change root password and remove administrator account
+    include_role:
+      name: ansible-role-accounts
+    vars:
+      accounts:
+        remove:
+          user: administrator
+        updatePassword:
+          username: root
+          password: !vault |
+            $ANSIBLE_VAULT;1.1;AES256
+            11111111111111111111111111111111111111111111111111111111111111111111111111111111
+            11111111111111111111111111111111111111111111111111111111111111111111111111111111
+            11111111111111111111111111111111111111111111111111111111111111111111111111111111
+            11111111111111111111111111111111111111111111111111111111111111111111111111111111
+            11111111111111111111111111111111111111111111111111111111111111111111
 ```

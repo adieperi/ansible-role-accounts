@@ -1,4 +1,6 @@
 ---
+allow_duplicates: true
+
 galaxy_info:
   author: Anthony Dieperink
   description: Ansible role to manage accounts and ssh authorized keys
